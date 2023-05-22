@@ -1,8 +1,53 @@
 # Terraform Settings, Providers & Resource Blocks
 ## Step-01: Introduction
 - [Terraform Settings](https://www.terraform.io/docs/language/settings/index.html)
+  - Define
+    - Terraform's behavior
+  - Contains
+    - Required Terraform Version
+    - List Required Providers
+    - Terraform Backend
+  - Use
+    - **Only constant values**
 - [Terraform Providers](https://www.terraform.io/docs/providers/index.html)
+  - Install providers
+  - Belongs to
+    - root module
+  - Downloaded from 
+    - Terraform Registry
+  - Badges
+    - Official
+      - By hashicorp
+    - Verified
+      - by third-party partner
+      - Verified by hashicorp
+    - Archived
+      - Official or verified
+      - no longer maintained
+    - Community
+  - Dependency Lock file
 - [Terraform Resources](https://www.terraform.io/docs/language/resources/index.html)
+  - Infrastructure objects
+  - Structure
+    - Block Type
+      - `resource`
+    - Block labels
+      - `Resource type`
+      - `Resource local name`
+    - Behavior
+      - Create
+        - Resource
+          - In Configuration
+          - Not in reality
+      - Destroy
+        - Resource
+          - In State file
+          - Not in configuration
+      - Modify
+        - Update in-place
+        - else
+          - Destroy and recreate
+            - API Limiations ...
 - [Terraform File Function](https://www.terraform.io/docs/language/functions/file.html)
 - Create EC2 Instance using Terraform and provision a webserver with userdata. 
 
@@ -110,8 +155,39 @@ http://<PUBLIC-IP>/app1/metadata.html
 
 ## Step-08: Terraform State - Basics
 - Understand about Terraform State
-- Terraform State file `terraform.tfstate`
+- Terraform State
+  - Purpose
+    - Map
+      - Terraform config
+        - 1 resource instance
+      - Real world
+        - 1 Remote object
+    - Metadata
+      - resource dependencies
+        - destroy
+      - Provider config
+      - ...
+    - Performance
+      - Source of truth
+        - Statefile
+          - Less API calls
+    - Syncing
+      - Collaboration in teams
+        - Remote state
+  - TF conf. -> State -> Reality 
+  - file 
+    - `terraform.tfstate`
+  - Created after
+    - First apply
+  - Critical
 - Understand about `Desired State` and `Current State`
+  - `Desired State`
+    - TF configuration files
+  - `Current State`
+    - Default
+      - Real infrastructure
+    - Disable refresh
+      - State file 
 
 
 ## Step-09: Clean-Up
